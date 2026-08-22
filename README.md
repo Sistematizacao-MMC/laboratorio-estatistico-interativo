@@ -39,13 +39,13 @@ Os arquivos compactados são baixados diretamente das **Releases** do GitHub por
 ### 1. Instale o pacote `requests` para gerenciar o download em fluxo (*stream*):
 
 ```bash
-pip install requests
+py install requests
 ```
 
 ### 2. Realize o download e a descompactação no diretório do projeto laboratorio-estatistico-interativo/data
 
 ```bash
-python data/download_dataset.py
+py data/download_dataset.py
 ```
 
 ---
@@ -53,7 +53,7 @@ python data/download_dataset.py
 ## 🎯 Módulos do Sistema
 
 * **Módulo 0 — Carga e Pré-processamento:** Leitura, tratamento e limpeza do conjunto de dados selecionado.
-* **Módulo 1 — Núcleo Estatístico Próprio (`minhastats`):** Biblioteca autoral contendo média, mediana, moda, amplitude, variâncias e desvios padrão (amostral/populacional), quartis/percentis, coeficiente de variação, covariância e correlação de Pearson.
+* **Módulo 1 — Núcleo Estatístico Próprio (`pystatistics`):** Biblioteca autoral contendo média, mediana, moda, amplitude, variâncias e desvios padrão (amostral/populacional), quartis/percentis, coeficiente de variação, covariância e correlação de Pearson.
 * **Módulo 2 — Estatística Descritiva Interativa:** Tabelas de distribuição de frequência, medidas de dispersão/tendência central, gráficos (histograma, boxplot, barras) e detecção de outliers pelo método IQR com interpretação automática.
 * **Módulo 3 — Probabilidade e Simulação (Monte Carlo):** Demonstração interativa da **Lei dos Grandes Números** e do **Teorema Central do Limite (TCL)** com parâmetros controlados pelo usuário.
 * **Módulo 4 — Distribuições Teóricas:** Ajuste e sobreposição de curvas teóricas (Normal, Poisson, Exponencial, etc.) sobre o histograma dos dados.

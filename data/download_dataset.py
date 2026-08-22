@@ -38,7 +38,7 @@ def download_file(url: str, dest_path: str, chunk_size: int = 1024 * 1024) -> No
                     )
                 else:
                     print(f"\rBaixados: {downloaded / (1024*1024):.1f} MB", end="")
-    print("\nDownload concluído.")
+    print("\nDownload concluido.")
 
 
 def extract_zip(zip_path: str, extract_to: str) -> None:
@@ -46,7 +46,7 @@ def extract_zip(zip_path: str, extract_to: str) -> None:
     print(f"Extraindo {zip_path} em {extract_to}...")
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         zip_ref.extractall(extract_to)
-    print("Extração concluída.")
+    print("Extracao concluida.")
 
 
 def main():
@@ -64,7 +64,7 @@ def main():
 
         if os.path.exists(zip_path):
             os.remove(zip_path)
-            print(f"Arquivo temporário {file_name} removido.\n")
+            print(f"Arquivo temporario {file_name} removido.\n")
 
 
 if __name__ == "__main__":
