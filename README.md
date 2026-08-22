@@ -9,8 +9,9 @@
 | Nome | GitHub |
 | :--- | :--- |
 | Rafael | [@Rafael](https://github.com/RafaelRLeite) |
-| Nome | [@Matheus](https://github.com/matheusbrito090108) |
-| Nome | [@Fernando](https://github.com/fernandoluca015 ) |
+| Matheus | [@Matheus](https://github.com/matheusbrito090108) |
+| Fernando | [@Fernando](https://github.com/fernandoluca015) |
+| Italo | [@Italo](https://github.com/Italo-917) |
 
 ---
 
