@@ -32,6 +32,24 @@ O diferencial do projeto reside na implementação **autoral do núcleo estatís
 
 ---
 
+## 📥 Download e preparação do dataset (dados abertos do CNPJ)
+
+Os arquivos compactados são baixados diretamente das **Releases** do GitHub por meio de um script.
+
+### 1. Instale o pacote `requests` para gerenciar o download em fluxo (*stream*):
+
+```bash
+pip install requests
+```
+
+### 2. Realize o download e a descompactação no diretório do projeto laboratorio-estatistico-interativo/data
+
+```bash
+python data/download_dataset.py
+```
+
+---
+
 ## 🎯 Módulos do Sistema
 
 * **Módulo 0 — Carga e Pré-processamento:** Leitura, tratamento e limpeza do conjunto de dados selecionado.
