@@ -2,6 +2,8 @@ streamlit
 pandas
 numpy
 matplotlib
+seaborn
+plotly
 requests
 pytest
 scipy
