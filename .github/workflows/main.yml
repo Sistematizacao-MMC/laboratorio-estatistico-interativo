@@ -1,7 +1,7 @@
 name: Testes Python
 
 on:
-workflow_dispatch:
+  workflow_dispatch:
   push:
     branches:
       - modulo-5-fernando
