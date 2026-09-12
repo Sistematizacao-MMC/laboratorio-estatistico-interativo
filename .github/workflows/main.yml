@@ -1,6 +1,7 @@
 name: Testes Python
 
 on:
+  wokflow_dispatch:
   push:
     branches:
       - modulo-5-fernando
