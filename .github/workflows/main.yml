@@ -36,7 +36,7 @@ jobs:
 
       - name: Instalar dependências
         run: |
-          ARQUIVO=$(find . -type f -iname "requisitos.txt" -print -quit)
+          ARQUIVO=$(find . -type f -iname "requirements.txt" -print -quit)
 
           if [ -z "$ARQUIVO" ]; then
             echo "ERRO: requisitos.txt NÃO EXISTE NO COMMIT QUE O ACTIONS BAIXOU."
