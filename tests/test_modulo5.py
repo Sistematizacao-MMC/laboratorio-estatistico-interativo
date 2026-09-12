@@ -1,6 +1,6 @@
 import pytest
 
-from src.essencial.pystatistics import (
+from src.core.pystatistics import (
     correlacao_pearson,
     regrecao_linear_simples
 )
