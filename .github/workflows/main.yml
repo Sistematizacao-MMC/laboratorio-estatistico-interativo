@@ -21,14 +21,23 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Verificar diretório
+      - name: Verificar requisitos
         run: |
-          pwd
-          ls -la
-          find . -maxdepth 2 -type f
+          echo "Workspace: $GITHUB_WORKSPACE"
+          echo "Arquivos encontrados:"
+          find "$GITHUB_WORKSPACE" -type f -name "requisitos.txt" -print
 
       - name: Instalar dependências
-        run: pip install -r requisitos.txt
+        run: |
+          REQUISITOS=$(find "$GITHUB_WORKSPACE" -type f -name "requisitos.txt" -print -quit)
+
+          if [ -z "$REQUISITOS" ]; then
+            echo "ERRO: requisitos.txt não foi encontrado."
+            exit 1
+          fi
+
+          echo "Arquivo encontrado em: $REQUISITOS"
+          python -m pip install -r "$REQUISITOS"
 
       - name: Testes do Executor
         run: PYTHONPATH=. pytest
