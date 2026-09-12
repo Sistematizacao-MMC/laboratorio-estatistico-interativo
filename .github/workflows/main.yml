@@ -1,11 +1,12 @@
-name: Testes Python 
+name: Testes
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - modulo-5-fernando
   pull_request:
+    branches:
+      - modulo-5-fernando
 
 jobs:
   testes:
@@ -20,8 +21,14 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Verificar diretório
+        run: |
+          pwd
+          ls -la
+          find . -maxdepth 2 -type f
+
       - name: Instalar dependências
         run: pip install -r requisitos.txt
 
-      - name: Executar testes
+      - name: Testes do Executor
         run: PYTHONPATH=. pytest
