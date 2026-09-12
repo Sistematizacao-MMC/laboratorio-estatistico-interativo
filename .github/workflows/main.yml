@@ -1,4 +1,4 @@
-- name: Diagnosticar arquivos
+ name: Diagnosticar arquivos
   run: |
     echo "DIRETÓRIO ATUAL:"
     pwd
@@ -15,7 +15,7 @@
     echo "PROCURANDO REQUISITOS:"
     find . -iname "*requisitos*"
 
-- name: Instalar dependências
+ name: Instalar dependências
   run: |
     ARQUIVO=$(find . -type f -iname "requisitos.txt" -print -quit)
 
