@@ -1,0 +1,51 @@
+name: Testes
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Diagnosticar arquivos
+        run: |
+          echo "DIRETÓRIO ATUAL:"
+          pwd
+
+          echo "BRANCH:"
+          git branch --show-current
+
+          echo "COMMIT:"
+          git rev-parse HEAD
+
+          echo "ARQUIVOS DO COMMIT:"
+          git ls-tree -r HEAD --name-only
+
+          echo "PROCURANDO REQUISITOS:"
+          find . -iname "*requisitos*"
+
+      - name: Instalar dependências
+        run: |
+          ARQUIVO=$(find . -type f -iname "requirements.txt" -print -quit)
+
+          if [ -z "$ARQUIVO" ]; then
+            echo "ERRO: requisitos.txt NÃO EXISTE NO COMMIT QUE O ACTIONS BAIXOU."
+            exit 1
+          fi
+
+          echo "Arquivo encontrado: $ARQUIVO"
+          python -m pip install -r "$ARQUIVO"
+
+      - name: Executar testes
+        run: |
+          pytest
