@@ -1,4 +1,4 @@
-name: Testes
+name: Testes 
 
 on:
   push:
@@ -48,4 +48,4 @@ jobs:
 
       - name: Executar testes
         run: |
-          pytest
+          python -m pytest
