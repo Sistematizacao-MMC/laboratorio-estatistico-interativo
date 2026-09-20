@@ -422,3 +422,186 @@ st.warning(
     "Uma associação estatística entre duas variáveis "
     "não significa que uma variável seja a causa da outra."
 )
+# ============================================================
+# MÓDULO 3 — PROBABILIDADE E SIMULAÇÃO
+# ============================================================
+
+st.header("🎲 Módulo 3 — Probabilidade e Simulação")
+
+st.write(
+    "Neste módulo são demonstradas a Lei dos Grandes Números "
+    "e o Teorema Central do Limite por meio de simulações."
+)
+
+tab_lgn, tab_tcl = st.tabs([
+    "🎲 Lei dos Grandes Números",
+    "📊 Teorema Central do Limite"
+])
+
+# ============================================================
+# LEI DOS GRANDES NÚMEROS
+# ============================================================
+
+with tab_lgn:
+
+    st.subheader("🎲 Lei dos Grandes Números")
+
+    st.write(
+        "Ao aumentar o número de lançamentos de um dado, "
+        "a frequência relativa de cada face tende a se aproximar "
+        "da sua probabilidade teórica."
+    )
+
+    numero_lancamentos = st.slider(
+        "Número de lançamentos",
+        min_value=100,
+        max_value=10000,
+        value=1000,
+        step=100
+    )
+
+    face_escolhida = st.selectbox(
+        "Escolha uma face do dado",
+        [1, 2, 3, 4, 5, 6]
+    )
+
+    lancamentos = np.random.randint(
+        1,
+        7,
+        size=numero_lancamentos
+    )
+
+    ocorrencias = np.cumsum(lancamentos == face_escolhida)
+
+    frequencia_relativa = (
+        ocorrencias / np.arange(1, numero_lancamentos + 1)
+    )
+
+    probabilidade_teorica = 1 / 6
+
+    fig, ax = plt.subplots()
+
+    ax.plot(
+        frequencia_relativa,
+        label="Frequência relativa"
+    )
+
+    ax.axhline(
+        probabilidade_teorica,
+        linestyle="--",
+        label="Probabilidade teórica = 1/6"
+    )
+
+    ax.set_xlabel("Número de lançamentos")
+    ax.set_ylabel("Frequência relativa")
+    ax.set_title(
+        f"Lei dos Grandes Números — Face {face_escolhida}"
+    )
+
+    ax.legend()
+    ax.grid(True)
+
+    st.pyplot(fig)
+
+    frequencia_final = frequencia_relativa[-1]
+
+    st.metric(
+        "Frequência relativa final",
+        f"{frequencia_final:.4f}"
+    )
+
+    st.metric(
+        "Probabilidade teórica",
+        f"{probabilidade_teorica:.4f}"
+    )
+
+
+# ============================================================
+# TEOREMA CENTRAL DO LIMITE
+# ============================================================
+
+with tab_tcl:
+
+    st.subheader("📊 Teorema Central do Limite")
+
+    st.write(
+        "O Teorema Central do Limite mostra que, ao repetir "
+        "amostragens e calcular suas médias, a distribuição "
+        "dessas médias tende a se aproximar de uma distribuição Normal."
+    )
+
+    tamanho_amostra = st.slider(
+        "Tamanho de cada amostra",
+        min_value=2,
+        max_value=100,
+        value=30,
+        step=1
+    )
+
+    numero_repeticoes = st.slider(
+        "Número de repetições",
+        min_value=100,
+        max_value=5000,
+        value=1000,
+        step=100
+    )
+
+    amostras = np.random.randint(
+        1,
+        7,
+        size=(numero_repeticoes, tamanho_amostra)
+    )
+
+    medias = np.mean(amostras, axis=1)
+
+    media_geral = np.mean(medias)
+    desvio = np.std(medias)
+
+    fig, ax = plt.subplots()
+
+    ax.hist(
+        medias,
+        bins=30,
+        density=True,
+        alpha=0.7
+    )
+
+    x = np.linspace(
+        medias.min(),
+        medias.max(),
+        200
+    )
+
+    curva_normal = (
+        1 / (desvio * np.sqrt(2 * np.pi))
+    ) * np.exp(
+        -0.5 * ((x - media_geral) / desvio) ** 2
+    )
+
+    ax.plot(
+        x,
+        curva_normal,
+        linewidth=2,
+        label="Aproximação Normal"
+    )
+
+    ax.set_xlabel("Média das amostras")
+    ax.set_ylabel("Densidade")
+    ax.set_title(
+        "Teorema Central do Limite"
+    )
+
+    ax.legend()
+    ax.grid(True)
+
+    st.pyplot(fig)
+
+    st.metric(
+        "Média das médias",
+        f"{media_geral:.4f}"
+    )
+
+    st.metric(
+        "Desvio padrão das médias",
+        f"{desvio:.4f}"
+    )
