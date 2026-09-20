@@ -170,3 +170,19 @@ def regrecao_linear_simples(x, y):
     r2 = r ** 2
 
     return beta_0, beta_1, r2
+
+
+# Módulo 4 — Distribuições Teóricas
+
+def pdf_normal(x, mu, sigma):
+    if sigma <= 0:
+        return 0.0
+    coef = 1.0 / (sigma * math.sqrt(2 * math.pi))
+    expoente = -0.5 * ((x - mu) / sigma) ** 2
+    return coef * math.exp(expoente)
+
+
+def pdf_exponencial(x, lambd):
+    if x < 0 or lambd <= 0:
+        return 0.0
+    return lambd * math.exp(-lambd * x)
