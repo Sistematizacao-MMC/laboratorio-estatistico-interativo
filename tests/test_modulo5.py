@@ -2,6 +2,7 @@ import pytest
 
 from src.core.pystatistics import (
     correlacao_pearson,
+    regressao_linear_simples,
     regrecao_linear_simples
 )
 
@@ -16,6 +17,17 @@ def test_correlacao_pearson():
 
 
 def test_regressao_linear_simples():
+    x = [1, 2, 3, 4, 5]
+    y = [2, 4, 6, 8, 10]
+
+    b0, b1, r2 = regressao_linear_simples(x, y)
+
+    assert b0 == pytest.approx(0.0)
+    assert b1 == pytest.approx(2.0)
+    assert r2 == pytest.approx(1.0)
+
+
+def test_regrecao_linear_simples_alias():
     x = [1, 2, 3, 4, 5]
     y = [2, 4, 6, 8, 10]
 
